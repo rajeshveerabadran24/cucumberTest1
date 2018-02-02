@@ -10,6 +10,6 @@ public static String testcae_fail="Fail";
 public static String Driverpath="D:\\selenium beta3.03\\driver";
 public static final String Excel_Filepath="C:\\Users\\rajesh\\eclipse-workspace\\MavenBank1\\Book1.xlsx";
 public static final String Sheet_Name="Sheet1";
-
+public static String First_Testcase="Pass1";
 }
 
