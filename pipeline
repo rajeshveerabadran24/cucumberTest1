@@ -1,0 +1,62 @@
+node{
+stage('SCM Checkout'){
+
+git 'https://github.com/javahometech/my-app'
+}
+stage('Compile-Package'){
+// Get maven home path
+def mvnHome =tool name: 'maven-3',type:'maven'
+sh '${mvnHome}/bin/mvn package'
+
+
+
+}
+}
+
+
+
+******************************** Pipeline script from SCM *********************************************************************
+
+SCM : GIT
+Repository URL: https://github.com/javahometech/my-app
+
+
+*****************************Pipeline Script **************************************************************************************
+
+
+Sample Step: tool: use a tool for predifined installation
+
+Tool TYpe: Maven
+Tool: Maven -3
+
+
+
+
+
+****************************************************************** 2nd approach *************************************************
+pipeline {
+agent any
+stages{
+stage('Compile Stage'){
+steps {
+withMaven(maven : 'maven_3_5_0'){
+sh 'mvn clean compile'
+}
+}
+}
+
+stage ('Testing Stage'){
+steps{
+withMaven(maven : 'maven_3_5_0'){
+sh 'mvn test'
+
+}}}
+stage ('Deployment Stage'){
+steps{
+withMaven(maven : 'maven_3_5_0'){
+sh 'mvn deploy'
+
+}}}
+}
+}
+
